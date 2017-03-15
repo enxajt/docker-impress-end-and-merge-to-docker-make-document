@@ -17,7 +17,7 @@ RUN update-locale LANG=ja_JP.UTF-8 LANGUAGE=ja_JP:ja
 ENV LC_ALL C.UTF-8
 
 # nodejs npm gulp
-RUN set -x apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y \
   build-essential \
   nodejs \
   npm \
