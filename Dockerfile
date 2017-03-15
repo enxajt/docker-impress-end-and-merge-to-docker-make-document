@@ -42,11 +42,11 @@ ADD id_rsa ~/.ssh/id_rsa
 #  && sh ./private-config/git.sh \
 #  && sh ./private-config/user.sh
 
-# gulp for plantuml
-RUN git clone https://github.com/$USER/plantuml.git /home/$USER/plantuml
-WORKDIR /home/$USER/plantuml
+# gulp for impress 
+RUN git clone https://github.com/$USER/gulp-impress.git /home/$USER/gulp-impress
+WORKDIR /home/$USER/gulp-impress
 RUN npm init -y \
- && npm install --save-dev gulp path gulp-plantuml gulp-webserver gulp-print gulp-cached gulp-exec gulp-ejs gulp-rename gulp-plumber gulp-json-transform gulp-tap
+ && npm install --save-dev gulp path gulp-webserver gulp-print gulp-cached gulp-exec gulp-ejs gulp-rename gulp-plumber gulp-json-transform gulp-tap
 EXPOSE 8000 35729
 
 CMD ["/bin/bash"]
