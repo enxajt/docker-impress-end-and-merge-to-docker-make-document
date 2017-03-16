@@ -29,13 +29,15 @@ RUN apt-get -y purge nodejs npm \
  && npm update \
  && npm install --global gulp gulp-cli
 
+RUN apt-get install -y sudo
+
 ENV USER enxajt
 #RUN useradd -m -g sudo $USER && echo "$USER:$USER" | chpasswd
 RUN useradd -m -g sudo $USER
 USER $USER
 WORKDIR /home/$USER
-RUN mkdir ~/.ssh
-ADD id_rsa ~/.ssh/id_rsa
+#RUN mkdir ~/.ssh
+#ADD id_rsa ~/.ssh/id_rsa
 #RUN touch ~/.ssh/known_hosts \
 #  && ssh-keyscan bitbucket.org >> ~/.ssh/known_hosts \
 #  && git clone git@bitbucket.org:enxajt/private-config.git \
@@ -46,7 +48,7 @@ ADD id_rsa ~/.ssh/id_rsa
 RUN git clone https://github.com/$USER/gulp-impress.git /home/$USER/gulp-impress
 WORKDIR /home/$USER/gulp-impress
 RUN npm init -y \
- && npm install --save-dev gulp path gulp-webserver gulp-print gulp-cached gulp-exec gulp-ejs gulp-rename gulp-plumber gulp-json-transform gulp-tap
+ && npm install --save-dev gulp path gulp-webserver gulp-print gulp-cached gulp-exec gulp-ejs gulp-rename gulp-plumber gulp-json-transform gulp-tap gulp-replace
 EXPOSE 8000 35729
 
 CMD ["/bin/bash"]
