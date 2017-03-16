@@ -36,13 +36,6 @@ ENV USER enxajt
 RUN useradd -m -g sudo $USER
 USER $USER
 WORKDIR /home/$USER
-#RUN mkdir ~/.ssh
-#ADD id_rsa ~/.ssh/id_rsa
-#RUN touch ~/.ssh/known_hosts \
-#  && ssh-keyscan bitbucket.org >> ~/.ssh/known_hosts \
-#  && git clone git@bitbucket.org:enxajt/private-config.git \
-#  && sh ./private-config/git.sh \
-#  && sh ./private-config/user.sh
 
 # gulp for impress 
 RUN git clone https://github.com/$USER/gulp-impress.git /home/$USER/gulp-impress
