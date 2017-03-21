@@ -38,8 +38,8 @@ USER $USER
 WORKDIR /home/$USER
 
 # gulp for impress 
-RUN git clone https://github.com/$USER/gulp-impress.git /home/$USER/gulp-impress
-WORKDIR /home/$USER/gulp-impress
+RUN git clone https://github.com/$USER/gulp-impress.git /home/$USER/gulp
+WORKDIR /home/$USER/gulp
 RUN npm init -y \
  && npm install --save-dev gulp path gulp-webserver gulp-print gulp-cached gulp-exec gulp-ejs gulp-rename gulp-plumber gulp-json-transform gulp-tap gulp-replace
 EXPOSE 8000 35729
