@@ -49,4 +49,8 @@ RUN curl -L https://github.com/astefanutti/decktape/archive/v1.0.0.tar.gz | tar 
   && curl -L https://github.com/astefanutti/decktape/releases/download/v1.0.0/phantomjs-linux-x86-64 -o phantomjs \
   && chmod +x phantomjs
 
+# should be organized
+ENV USER root
+RUN apt-get install -y pandoc
+
 CMD ["/bin/bash"]
