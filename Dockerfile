@@ -9,6 +9,9 @@ RUN apt-get update && apt-get install -y \
   fonts-ipafont-mincho \
   curl \
   git \
+  pandoc \
+# TODO: remove sudo
+  sudo \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
@@ -29,8 +32,6 @@ RUN apt-get -y purge nodejs npm \
  && npm update \
  && npm install --global gulp gulp-cli
 
-RUN apt-get install -y sudo
-
 ENV USER enxajt
 #RUN useradd -m -g sudo $USER && echo "$USER:$USER" | chpasswd
 RUN useradd -m -g sudo $USER
@@ -41,16 +42,12 @@ WORKDIR /home/$USER
 RUN git clone https://github.com/$USER/gulp-impress.git /home/$USER/gulp
 WORKDIR /home/$USER/gulp
 RUN npm init -y \
- && npm install --save-dev gulp path gulp-webserver gulp-print gulp-cached gulp-exec gulp-ejs gulp-rename gulp-plumber gulp-json-transform gulp-tap gulp-replace
+ && npm install --save-dev gulp path gulp-webserver gulp-print gulp-cached gulp-exec gulp-ejs gulp-rename gulp-plumber gulp-json-transform gulp-tap gulp-replace fs
 EXPOSE 8000 35729
 
 RUN curl -L https://github.com/astefanutti/decktape/archive/v1.0.0.tar.gz | tar -xz --exclude phantomjs \
   && cd decktape-1.0.0 \
   && curl -L https://github.com/astefanutti/decktape/releases/download/v1.0.0/phantomjs-linux-x86-64 -o phantomjs \
   && chmod +x phantomjs
-
-# should be organized
-USER root
-RUN apt-get install -y pandoc
 
 CMD ["/bin/bash"]
