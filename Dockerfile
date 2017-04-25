@@ -43,7 +43,7 @@ WORKDIR /home/$USER
 RUN git clone https://github.com/$USER/gulp-impress.git /home/$USER/gulp-impress
 WORKDIR /home/$USER/gulp-impress
 RUN npm init -y \
-RUN npm  install --save-dev gulp path gulp-webserver gulp-print gulp-cached gulp-exec gulp-ejs gulp-rename gulp-plumber gulp-json-transform gulp-tap gulp-replace fs
+  && npm install --save-dev gulp path gulp-webserver gulp-print gulp-cached gulp-exec gulp-ejs gulp-rename gulp-plumber gulp-json-transform gulp-tap gulp-replace fs
 EXPOSE 8000 35729
 
 RUN curl -L https://github.com/astefanutti/decktape/archive/v1.0.0.tar.gz | tar -xz --exclude phantomjs \
