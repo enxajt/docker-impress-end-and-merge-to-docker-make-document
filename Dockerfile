@@ -29,9 +29,7 @@ RUN apt-get update && apt-get install -y \
  && n stable \
  && ln -sf /usr/local/bin/node /usr/bin/node
 RUN apt-get -y purge nodejs npm \
- && npm update \
- && npm install --global gulp gulp-cli
-
+ && npm update
 
 ENV USER enxajt
 #RUN useradd -m -g sudo $USER && echo "$USER:$USER" | chpasswd
@@ -39,16 +37,16 @@ RUN useradd -m -g sudo $USER
 USER $USER
 WORKDIR /home/$USER
 
-# gulp for impress 
-RUN git clone https://github.com/$USER/gulp-impress.git /home/$USER/gulp-impress
-WORKDIR /home/$USER/gulp-impress
-RUN npm init -y \
-  && npm install --save-dev gulp path gulp-webserver gulp-print gulp-cached gulp-exec gulp-ejs gulp-rename gulp-plumber gulp-json-transform gulp-tap gulp-replace fs
 EXPOSE 8000 35729
+RUN git clone https://github.com/enxajt/npm-impress.git
+WORKDIR /home/$USER/npm-impress
+RUN npm install
 
 RUN curl -L https://github.com/astefanutti/decktape/archive/v1.0.0.tar.gz | tar -xz --exclude phantomjs \
   && cd decktape-1.0.0 \
   && curl -L https://github.com/astefanutti/decktape/releases/download/v1.0.0/phantomjs-linux-x86-64 -o phantomjs \
   && chmod +x phantomjs
+
+  RUN git pull
 
 CMD ["/bin/bash"]
