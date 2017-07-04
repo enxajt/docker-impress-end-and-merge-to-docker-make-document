@@ -49,6 +49,4 @@ RUN cd /home/$USER/ \
   && curl -L https://github.com/astefanutti/decktape/releases/download/v1.0.0/phantomjs-linux-x86-64 -o phantomjs \
   && chmod +x phantomjs
 
-RUN git pull
-
 CMD ["/bin/bash"]
