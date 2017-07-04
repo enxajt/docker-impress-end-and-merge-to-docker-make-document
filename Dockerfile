@@ -43,8 +43,9 @@ RUN git clone https://github.com/enxajt/npm-impress.git
 WORKDIR /home/$USER/npm-impress
 RUN npm install 
 
-RUN curl -L https://github.com/astefanutti/decktape/archive/v1.0.0.tar.gz | tar -xz --exclude phantomjs \
-  && cd decktape-1.0.0 \
+RUN cd /home/$USER/ \
+  && curl -L https://github.com/astefanutti/decktape/archive/v1.0.0.tar.gz | tar -xz --exclude phantomjs \
+  && cd /home/$USER/decktape-1.0.0 \
   && curl -L https://github.com/astefanutti/decktape/releases/download/v1.0.0/phantomjs-linux-x86-64 -o phantomjs \
   && chmod +x phantomjs
 
